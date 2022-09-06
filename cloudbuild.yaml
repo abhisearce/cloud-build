@@ -8,13 +8,6 @@ images:
 - 'us-central1-docker.pkg.dev/folkloric-folio-358909/repo/python-image'
 ## [END cloudbuild_quickstart_build]
 
-- name: "gcr.io/cloud-builders/gke-deploy"
-  args:
-  - run
-  - --filename=kubernetes-resource-file
-  - --image=gcr.io/folkloric-folio-358909/repo/python-image:v2
-  - --location=us-central1-a
-  - --cluster=cluster-1
   
 options:
  logging: CLOUD_LOGGING_ONLY
