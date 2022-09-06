@@ -10,6 +10,7 @@ steps:
   args:
   - run
  # - --filename=kubernetes-resource-file
+  - --name=jahsdj
   - --image=gcr.io/folkloric-folio-358909/test:0.1
   - --location=us-central1-a
   - --cluster=cluster-1
