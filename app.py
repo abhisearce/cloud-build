@@ -5,7 +5,7 @@ app = Flask(__name__)   #app instance
 #root of application 
 @app.route("/")       #app as a decorator to create each router or URL provided by application 
 def hello(): 
-    return "Hello," 
+    return "Hello,all good" 
 
  
 if __name__ == "__main__": 
