@@ -21,7 +21,7 @@ images:
   
 substitutions:
     #GCP Specific configuration. Please DON'T change anything
-    _PROJECT: folkloric-folio-358909
+    _PROJECT: My First Project
     _ZONE: us-central1-a
     _GKE_CLUSTER: cluster-1
     
