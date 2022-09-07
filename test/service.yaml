@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: emailservice
+  name: service
 spec:
   type: ClusterIP
   selector:
-    app: emailservice
+    app: service
   ports:
   - name: grpc
     port: 5000
