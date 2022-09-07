@@ -1,13 +1,16 @@
-# [START cloudbuild_quickstart_build]
-# build docker image
 steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'us-central1-docker.pkg.dev/folkloric-folio-358909/repo/python-image:v1', '.' ]
-# push docker image
-images:
-- 'us-central1-docker.pkg.dev/folkloric-folio-358909/repo/python-image'
-## [END cloudbuild_quickstart_build]
-
-  
-options:
- logging: CLOUD_LOGGING_ONLY
+  # build the container image
+- name: "gcr.io/cloud-builders/docker"
+  args: ["build", "-t", "gcr.io/folkloric-folio-358909/private/service:0.1", "."]
+  # push container image
+- name: "gcr.io/cloud-builders/docker"
+  args: ["push", "gcr.io/folkloric-folio-358909/private/service:0.1"]
+  # deploy container image to GKE
+- name: "gcr.io/cloud-builders/gke-deploy"
+  args:
+  - run
+  - --filename=./test
+  #- --name=jahsdj
+  #- --image=gcr.io/folkloric-folio-358909/private/service:0.1
+  - --location=us-central1-a
+  - --cluster=legi-gke
