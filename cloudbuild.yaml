@@ -9,7 +9,7 @@ steps:
 - name: "gcr.io/cloud-builders/gke-deploy"
   args:
   - run
-  - --filename=k8s-file.yaml
+  - --filename=./test
   #- --name=jahsdj
   #- --image=gcr.io/folkloric-folio-358909/private/sumne:0.1
   - --location=us-central1-a
