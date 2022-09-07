@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: emailservice
+spec:
+  type: ClusterIP
+  selector:
+    app: emailservice
+  ports:
+  - name: grpc
+    port: 5000
+    targetPort: 8080
+
+
+
+
+terraformer import google --resources=gke,project --projects=folkloric-folio-358909 --regions=us-central1-a
