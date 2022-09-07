@@ -1,16 +1,16 @@
 steps:
   # build the container image
 - name: "gcr.io/cloud-builders/docker"
-  args: ["build", "-t", "gcr.io/folkloric-folio-358909/test/and:0.1", "."]
+  args: ["build", "-t", "gcr.io/folkloric-folio-358909/private/sumne:0.1", "."]
   # push container image
 - name: "gcr.io/cloud-builders/docker"
-  args: ["push", "gcr.io/folkloric-folio-358909/test/and:0.1"]
+  args: ["push", "gcr.io/folkloric-folio-358909/private/sumne:0.1"]
   # deploy container image to GKE
 - name: "gcr.io/cloud-builders/gke-deploy"
   args:
   - run
  # - --filename=kubernetes-resource-file
   #- --name=jahsdj
-  - --image=gcr.io/folkloric-folio-358909/test/and:0.1
+  - --image=gcr.io/folkloric-folio-358909/private/sumne:0.1
   - --location=us-central1-a
-  - --cluster=cluster-1
+  - --cluster=legi-gke
