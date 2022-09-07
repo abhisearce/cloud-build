@@ -1,11 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: emailservice
+  name: service
 spec:
   selector:
     matchLabels:
-      app: emailservice
+      app: service
   template:
     metadata:
       labels:
@@ -14,8 +14,8 @@ spec:
       serviceAccountName: default
       terminationGracePeriodSeconds: 5
       containers:
-      - name: server
-        image: gcr.io/folkloric-folio-358909/private/sumne:0.1
+      - name: service
+        image: gcr.io/folkloric-folio-358909/private/service:0.1
         ports:
         - containerPort: 8080
         env:
