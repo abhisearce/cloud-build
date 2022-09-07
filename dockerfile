@@ -1,10 +1,15 @@
-FROM python:3.8-slim-buster
+FROM node:boron
 
-WORKDIR /app
+# Create app directory
+WORKDIR /usr/src/app
 
-COPY requirements.txt requirements.txt
-RUN pip3 install -r requirements.txt
+# Install App Dependencies
+COPY package.json .
+RUN npm install
 
+# Bundle App Source
 COPY . .
 
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+EXPOSE 8080
+
+CMD ["npm", "start"]
