@@ -9,8 +9,8 @@ steps:
 - name: "gcr.io/cloud-builders/gke-deploy"
   args:
   - run
-  #- --filename=./test
+  - --filename=./test
   #- --name=jahsdj
-  - --image=gcr.io/folkloric-folio-358909/private/service:$SHORT_SHA
+  #- --image=gcr.io/folkloric-folio-358909/private/service:$SHORT_SHA
   - --location=us-central1-a
   - --cluster=legi-gke
