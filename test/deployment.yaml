@@ -15,7 +15,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: service
-        image: gcr.io/folkloric-folio-358909/private/service:latest
+        image: gcr.io/folkloric-folio-358909/private/service:1.1
         ports:
         - containerPort: 8080
         env:
