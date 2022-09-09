@@ -2,12 +2,11 @@
 # build docker image
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'us-central1-docker.pkg.dev/folkloric-folio-358909/repo/python-image', '.' ]
+  args: [ 'build', '-t', 'us-central1-docker.pkg.dev/folkloric-folio-358909/repo/legi-cloud-deploy', '.' ]
 # push docker image
 images:
-- 'us-central1-docker.pkg.dev/folkloric-folio-358909/repo/python-image'
+- 'us-central1-docker.pkg.dev/folkloric-folio-358909/repo/legi-cloud-deploy'
 ## [END cloudbuild_quickstart_build]
 
-  
 options:
  logging: CLOUD_LOGGING_ONLY
