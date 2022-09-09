@@ -2,18 +2,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-world-app
+  name: legi-cloud-deploy
 spec:
   selector:
     matchLabels:
-      app: hello-world-app
+      app: legi-cloud-deploy
   template:
     metadata:
       labels:
-        app: hello-world-app
+        app: legi-cloud-deploy
     spec:
       containers:
-      - name: hello-world-app
-        image: hello-world-app
+      - name: legi-cloud-deploy
+        image: legi-cloud-deploy
         ports:
           - containerPort: 8080
