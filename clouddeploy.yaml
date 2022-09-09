@@ -6,13 +6,13 @@ metadata:
 description: Hello World Deployment Pipeline 
 serialPipeline:
   stages:
-  - targetId: staging
+  - targetId: legi-cloud-deploy
 
 ---
 apiVersion: deploy.cloud.google.com/v1
 kind: Target
 metadata:
-  name: production
+  name: legi-cloud-deploy
 description: production Environment
 gke:
   cluster: projects/folkloric-folio-358909/locations/us-central1-a/clusters/legi-gke
