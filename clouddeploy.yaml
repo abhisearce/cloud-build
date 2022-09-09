@@ -1,5 +1,5 @@
 ---
-apiVersion: deploy.cloud.google.com/v1beta1
+apiVersion: deploy.cloud.google.com/v1
 kind: DeliveryPipeline
 metadata:
   name: hello-world-app
@@ -7,22 +7,13 @@ description: Hello World Deployment Pipeline
 serialPipeline:
   stages:
   - targetId: staging
-  - targetId: production
 
 ---
-apiVersion: deploy.cloud.google.com/v1beta1
-kind: Target
-metadata:
-  name: staging
-description: Staging Environment
-gke:
-  cluster: projects/cloud-deploy-example/locations/us-central1/clusters/staging
-
----
-apiVersion: deploy.cloud.google.com/v1beta1
+apiVersion: deploy.cloud.google.com/v1
 kind: Target
 metadata:
   name: production
-description: Production Environment
+description: production Environment
 gke:
-  cluster: projects/cloud-deploy-example/locations/us-central1/clusters/production
+  cluster: projects/folkloric-folio-358909/locations/us-central1-a/clusters/legi-gke
+
