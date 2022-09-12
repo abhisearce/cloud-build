@@ -6,11 +6,4 @@ steps:
 - name: "gcr.io/cloud-builders/docker"
   args: ["push", "gcr.io/folkloric-folio-358909/private/service:1.5"]
   # deploy container image to GKE
-- name: "gcr.io/cloud-builders/gke-deploy"
-  args:
-  - run
-  - --filename=./test
-  #- --name=jahsdj
-  #- --image=gcr.io/folkloric-folio-358909/private/service:$SHORT_SHA
-  - --location=us-central1-a
-  - --cluster=legi-gke
+
