@@ -1,10 +1,12 @@
+# [START cloudbuild_quickstart_build]
+# build docker image
 steps:
-# Build and tag using commit sha
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '.', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/repo:${COMMIT_SHA}', '-f', 'Dockerfile']
-# Push the container image
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/repo:${COMMIT_SHA}']
+  args: [ 'build', '-t', 'us-central1-docker.pkg.dev/folkloric-folio-358909/repo:${COMMIT_SHA}', '.' ]
+# push docker image
+images:
+- 'us-central1-docker.pkg.dev/folkloric-folio-358909/repo:${COMMIT_SHA}'
+## [END cloudbuild_quickstart_build]
 # Create release in Google Cloud Deploy
 - name: gcr.io/google.com/cloudsdktool/cloud-sdk
   entrypoint: gcloud
