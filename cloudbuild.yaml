@@ -4,14 +4,9 @@ steps:
 # push docker image
 images:
 - 'us-central1-docker.pkg.dev/folkloric-folio-358909/repo/legi-cloud-deploy:${COMMIT_SHA}'
-## [END cloudbuild_quickstart_build]
-
-options:
- logging: CLOUD_LOGGING_ONLY
 
 ## [END cloudbuild_quickstart_build]
 # Create release in Google Cloud Deploy
-
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: 'bash'
   args:
