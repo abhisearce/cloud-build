@@ -20,7 +20,7 @@ steps:
     [
       "deploy", "releases", "create", "rel-${SHORT_SHA}",
       "--delivery-pipeline", "gitops",
-      "--region", "us-central1-c",
+      "--region", "us-central1",
       "--annotations", "commitId=${REVISION_ID}",
       "--images", "clouddeploy-image=gcr.io/$PROJECT_ID/sanket-clouddeploy-image:${COMMIT_SHA}"
     ]
