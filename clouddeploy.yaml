@@ -7,7 +7,6 @@ metadata:
 description: main application pipeline
 serialPipeline:
   stages:
-  - targetId: qsdev
   - targetId: qsprod
 ---
 
@@ -15,30 +14,11 @@ serialPipeline:
 apiVersion: deploy.cloud.google.com/v1
 kind: Target
 metadata:
- name: qsdev
+ name: qsprod
 description: development cluster
 gke:
- cluster:  projects/$PROJECT_ID/locations/asia-east1-a/clusters/sanket-test-cluster
-executionConfigs:
-- defaultPool:
-    serviceAccount: gke-sa@searce-playground-v1.iam.gserviceaccount.com
-  usages:
-  - RENDER 
-  - DEPLOY   
----
-#Our 2st Cluster TARGET
+ cluster:  projects/$PROJECT_ID/locations/us-central1-c/clusters/legi-gke
 
-apiVersion: deploy.cloud.google.com/v1
-kind: Target
-metadata:
- name: qsprod
-description: production cluster
-requireApproval: true
-gke:
- cluster:  projects/$PROJECT_ID//locations/asia-east1-a/clusters/sanket-prod-cluster
-executionConfigs:
-- defaultPool:
-    serviceAccount: gke-sa@searce-playground-v1.iam.gserviceaccount.com
-  usages:
-  - RENDER 
-  - DEPLOY
+
+
+
