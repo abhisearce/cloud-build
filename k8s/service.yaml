@@ -1,12 +1,12 @@
----
 apiVersion: v1
 kind: Service
 metadata:
-  name: hello-world-service
+  name: service
 spec:
-  ports:
-  - port: 80
-    targetPort: 8080
   type: LoadBalancer
   selector:
-    app: hello-world-app
+    app: legi-cloud-deploy
+  ports:
+  - name: grpc
+    port: 8080
+    targetPort: 8080
