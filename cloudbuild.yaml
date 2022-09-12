@@ -1,10 +1,10 @@
 steps:
 # Build and tag using commit sha
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '.', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/repo/legi-test:${COMMIT_SHA}', '-f', 'Dockerfile']
+  args: ['build', '.', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/repo:${COMMIT_SHA}', '-f', 'Dockerfile']
 # Push the container image
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/repo/legi-test:${COMMIT_SHA}']
+  args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/repo:${COMMIT_SHA}']
 # Create release in Google Cloud Deploy
 - name: gcr.io/google.com/cloudsdktool/cloud-sdk
   entrypoint: gcloud
@@ -14,5 +14,5 @@ steps:
       "--delivery-pipeline", "legi-cloud-deploy",
       "--region", "us-central1",
       "--annotations", "commitId=${REVISION_ID}",
-      "--images", "legi-cloud-deploy=us-central1-docker.pkg.dev/$PROJECT_ID/repo/legi-test:${COMMIT_SHA}"
+      "--images", "repo=us-central1-docker.pkg.dev/$PROJECT_ID/repo:${COMMIT_SHA}"
     ]
