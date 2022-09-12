@@ -1,21 +1,20 @@
 steps:
+# Build and tag using commit sha
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'us-central1-docker.pkg.dev/folkloric-folio-358909/repo/legi-cloud-deploy:${COMMIT_SHA}', '.' ]
-# push docker image
-images:
-- 'us-central1-docker.pkg.dev/folkloric-folio-358909/repo/legi-cloud-deploy:${COMMIT_SHA}'
-
-## [END cloudbuild_quickstart_build]
+  args: ['build', '.', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/repo/legi-test:${COMMIT_SHA}', '-f', 'dockerfile']
+# Push the container image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/repo/legi-test:${COMMIT_SHA}']
 # Create release in Google Cloud Deploy
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: 'bash'
+- name: gcr.io/google.com/cloudsdktool/cloud-sdk
+  entrypoint: gcloud
   args:
-  - '-c'
-  - > 
-    gcloud deploy releases create release-$BUILD_ID
-    --delivery-pipeline=hello-world-app
-    --region=us-central1
-    --source=./
-    --images", "clouddeploy-image=us-central1-docker.pkg.dev/$PROJECT_ID/abhi-clouddeploy-image:${COMMIT_SHA}
+    [
+      "deploy", "releases", "create", "rel-${SHORT_SHA}",
+      "--delivery-pipeline", "legi-cloud-deploy",
+      "--region", "us-central1",
+      "--annotations", "commitId=${REVISION_ID}",
+      "--images", "repo/legi-test=us-central1-docker.pkg.dev/$PROJECT_ID/repo/legi-test:${COMMIT_SHA}"
+    ]
 
 
