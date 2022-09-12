@@ -6,21 +6,17 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/repo/legi-test:${COMMIT_SHA}']
 # Create release in Google Cloud Deploy
-- name: gcr.io/k8s-skaffold/skaffold
+
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: 'bash'
   args:
-    - skaffold
-    - build
-    - '--interactive=false'
-    - '--file-output=/workspace/artifacts.json'
-- name: gcr.io/google.com/cloudsdktool/cloud-sdk
-  entrypoint: gcloud
-  args:
-    [
-      "deploy", "releases", "create", "rel-${SHORT_SHA}",
-      "--delivery-pipeline", "legi-cloud-deploy",
-      "--region", "us-central1",
-      "--annotations", "commitId=${REVISION_ID}",
-      "--build-artifacts", "/workspace/artifacts.json"
-    ]
+  - '-c'
+  - > 
+    gcloud deploy releases create release-$BUILD_ID
+    --delivery-pipeline=legi-cloud-deploy
+    --region=us-central1
+    --source=./
+    --images=legi-cloud-deploy=us-central1-docker.pkg.dev/$PROJECT_ID/repo/legi-test:$SHORT_SHA 
+
 
 
