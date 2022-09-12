@@ -16,7 +16,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: legi-cloud-deploy
-        image: gcr.io/folkloric-folio-358909/private/service:1.5
+        image: legi-cloud-deploy
         ports:
         - containerPort: 8080
         env:
