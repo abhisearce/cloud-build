@@ -16,5 +16,6 @@ steps:
       "--annotations", "commitId=${REVISION_ID}",
       "--images", "legi-cloud-deploy=us-central1-docker.pkg.dev/$PROJECT_ID/repo/legi-test:${COMMIT_SHA}"
     ]
-
+options:
+ logging: CLOUD_LOGGING_ONLY
 
