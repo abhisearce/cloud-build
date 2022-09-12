@@ -2,10 +2,10 @@
 # build docker image
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'us-central1-docker.pkg.dev/folkloric-folio-358909/repo/python-image:v1', '.' ]
+  args: [ 'build', '-t', 'us-central1-docker.pkg.dev/folkloric-folio-358909/repo/legi-test:v1', '.' ]
 # push docker image
 images:
-- 'us-central1-docker.pkg.dev/folkloric-folio-358909/repo/python-image'
+- 'us-central1-docker.pkg.dev/folkloric-folio-358909/repo/legi-test:v1'
 ## [END cloudbuild_quickstart_build]
 
   
