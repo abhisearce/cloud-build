@@ -1,7 +1,7 @@
 steps:
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '.', '-t', 'gcr.io/$PROJECT_ID/clouddeploy-image:${COMMIT_SHA}', '-f', 'Dockerfile']
+  args: ['build', '.', '-t', 'gcr.io/$PROJECT_ID/clouddeploy-image:${COMMIT_SHA}', '-f', 'dockerfile']
 
 # Push the container image
 
