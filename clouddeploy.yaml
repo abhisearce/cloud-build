@@ -17,9 +17,4 @@ metadata:
 description: legi cloud Production Environment
 gke:
   cluster: projects/folkloric-folio-358909/locations/us-central1/clusters/legi-gke
-executionConfigs:
-- defaultPool:
-    serviceAccount: 527947934452@cloudbuild.gserviceaccount.com
-  usages:
-  - RENDER 
-  - DEPLOY   
+  
