@@ -12,13 +12,15 @@ steps:
 ## [END cloudbuild_quickstart_build]
 # Create release in Google Cloud Deploy
 
-- name: gcr.io/google.com/cloudsdktool/cloud-sdk
-  entrypoint: gcloud
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: 'bash'
   args:
-    [
-      "deploy", "releases", "create", "rel-${SHORT_SHA}",
-      "--delivery-pipeline", "legi-cloud-deploy",
-      "--region", "us-central1",
-      "--annotations", "commitId=${REVISION_ID}",
-      "--images", "clouddeploy-image=us-central1-docker.pkg.dev/$PROJECT_ID/abhi-clouddeploy-image:${COMMIT_SHA}"
-    ]
+  - '-c'
+  - > 
+    gcloud deploy releases create release-$BUILD_ID
+    --delivery-pipeline=hello-world-app
+    --region=us-central1
+    --source=./
+    --images", "clouddeploy-image=us-central1-docker.pkg.dev/$PROJECT_ID/abhi-clouddeploy-image:${COMMIT_SHA}
+
+
