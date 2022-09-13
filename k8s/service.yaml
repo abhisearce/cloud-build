@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: service
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: legi-cloud-deploy
   ports:
