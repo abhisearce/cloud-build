@@ -1,15 +1,15 @@
 steps:
   # build the container image
 - name: "gcr.io/cloud-builders/docker"
-  args: ["build", "-t", "gcr.io/folkloric-folio-358909/private/service:1.5", "."]
+  args: ["build", "-t", "gcr.io/folkloric-folio-358909/cloud-deploy/legistify:1.0", "."]
   # push container image
 - name: "gcr.io/cloud-builders/docker"
-  args: ["push", "gcr.io/folkloric-folio-358909/private/service:1.5"]
+  args: ["push", "gcr.io/folkloric-folio-358909/cloud-deploy/legistify:1.0"]
   # deploy container image to GKE
 - name: "gcr.io/cloud-builders/gke-deploy"
   args:
   - run
-  - --filename=./test
+  - --filename=./test/consumer-01
   #- --name=jahsdj
   #- --image=gcr.io/folkloric-folio-358909/private/service:$SHORT_SHA
   - --location=us-central1-a
