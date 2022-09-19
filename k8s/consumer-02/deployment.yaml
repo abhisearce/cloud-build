@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: consumer-001
+  name: consumer-002
 spec:
   selector:
     matchLabels:
-      app: consumer-001
+      app: consumer-002
   template:
     metadata:
       labels:
-        app: consumer-001
+        app: consumer-002
     spec:
       serviceAccountName: default
       terminationGracePeriodSeconds: 5
       containers:
-      - name: consumer-001
+      - name: consumer-002
         image: legi-cloud-deploy
         ports:
         - containerPort: 8080
