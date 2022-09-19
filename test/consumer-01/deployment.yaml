@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: service
+  name: consumer-01
 spec:
   selector:
     matchLabels:
-      app: service
+      app: consumer-01
   template:
     metadata:
       labels:
-        app: service
+        app: consumer-01
     spec:
       serviceAccountName: default
       terminationGracePeriodSeconds: 5
       containers:
-      - name: service
-        image: gcr.io/folkloric-folio-358909/private/service:1.5
+      - name: consumer-01
+        image: gcr.io/folkloric-folio-358909/cloud-deploy/legistify:1.0
         ports:
         - containerPort: 8080
         env:
