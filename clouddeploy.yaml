@@ -16,5 +16,5 @@ metadata:
   name: production
 description: legi cloud Production Environment
 gke:
-  cluster: projects/folkloric-folio-358909/locations/asia-south1/clusters/cluster-2
+  cluster: projects/folkloric-folio-358909/locations/asia-south1-a/clusters/cluster-2
   
