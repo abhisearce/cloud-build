@@ -9,7 +9,7 @@ steps:
 - name: "gcr.io/cloud-builders/gke-deploy"
   args:
   - run
-  - --filename=./test/consumer-*
+  - --filename=./test/consumer-01
   #- --name=jahsdj
   #- --image=gcr.io/folkloric-folio-358909/private/service:$SHORT_SHA
   - --location=us-central1-c
