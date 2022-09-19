@@ -10,6 +10,7 @@ steps:
   args:
   - run
   - --filename=./test/consumer-01
+  - --filename=./test/consumer-02
   #- --name=jahsdj
   #- --image=gcr.io/folkloric-folio-358909/private/service:$SHORT_SHA
   - --location=us-central1-c
