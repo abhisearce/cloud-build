@@ -15,5 +15,5 @@ metadata:
   name: legi-cloud-deploy
 description: production Environment
 gke:
-  cluster: projects/folkloric-folio-358909/locations/us-central1-a/clusters/legi-gke
+  cluster: projects/folkloric-folio-358909/locations/us-central1/clusters/legi-gke
 
