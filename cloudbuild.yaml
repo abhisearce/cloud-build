@@ -1,12 +1,20 @@
-# [START cloudbuild_quickstart_build]
-# build docker image
 steps:
+# Build and tag using commit sha
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'us-central1-docker.pkg.dev/folkloric-folio-358909/repo/legi-cloud-deploy', '.' ]
-# push docker image
-images:
-- 'us-central1-docker.pkg.dev/folkloric-folio-358909/repo/legi-cloud-deploy'
-## [END cloudbuild_quickstart_build]
-
+  args: ['build', '.', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/repo/legistify:${COMMIT_SHA}', '-f', 'dockerfile']
+# Push the container image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/repo/legistify:${COMMIT_SHA}']
+# Create release in Google Cloud Deploy
+- name: gcr.io/google.com/cloudsdktool/cloud-sdk
+  entrypoint: gcloud
+  args:
+    [
+      "deploy", "releases", "create", "rel-${SHORT_SHA}",
+      "--delivery-pipeline", "legi-cloud-deploy",
+      "--region", "us-central1",
+      "--annotations", "commitId=${REVISION_ID}",
+      "--images", "legi-cloud-deploy=us-central1-docker.pkg.dev/$PROJECT_ID/repo/legistify:${COMMIT_SHA}"
+    ]
 options:
  logging: CLOUD_LOGGING_ONLY
