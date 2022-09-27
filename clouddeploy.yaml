@@ -15,4 +15,4 @@ metadata:
  name: qsprod
 description: development cluster
 gke:
- cluster: projects/folkloric-folio-358909/locations/us-central1-c/clusters/cluster-2
+ cluster: projects/folkloric-folio-358909/locations/us-central1/clusters/cluster-2
