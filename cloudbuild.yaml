@@ -11,7 +11,7 @@ steps:
   args:
     [
       "deploy", "releases", "create", "rel-${SHORT_SHA}",
-      "--delivery-pipeline", "app1-demo",
+      "--delivery-pipeline", "app1-demo-1",
       "--region", "us-central1",
       "--annotations", "commitId=${REVISION_ID}",
       "--images", "legi-cloud-deploy=us-central1-docker.pkg.dev/$PROJECT_ID/repo/legistify:${COMMIT_SHA}"
