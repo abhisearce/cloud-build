@@ -1,20 +1,18 @@
----
-apiVersion: deploy.cloud.google.com/v1beta1
+apiVersion: deploy.cloud.google.com/v1
 kind: DeliveryPipeline
 metadata:
-  name: legi-cloud-deploy
-description: testing for cloud-deploy  
+ name: app1-demo
+description: main application pipeline
 serialPipeline:
-  stages:
-  # - targetId: staging
-  - targetId: production
-
+ stages:
+ - targetId: qsprod
+   profiles: []
 ---
-apiVersion: deploy.cloud.google.com/v1beta1
+
+apiVersion: deploy.cloud.google.com/v1
 kind: Target
 metadata:
-  name: production
-description: legi cloud Production Environment
+ name: qsprod
+description: development cluster
 gke:
-  cluster: projects/folkloric-folio-358909/locations/us-central1/clusters/cluster-2
-  
+ cluster: projects/folkloric-folio-358909/locations/us-central1/clusters/cluster-2
