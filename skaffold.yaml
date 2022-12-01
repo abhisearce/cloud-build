@@ -1,5 +1,6 @@
-apiVersion: skaffold/v2beta16
+piVersion: skaffold/v3alpha1
 kind: Config
 deploy:
-  kubectl:
-    manifests: ["k8s/consumer-*"]
+  kpt:
+    dir:
+      k8s
