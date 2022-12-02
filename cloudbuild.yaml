@@ -2,10 +2,10 @@
 # build docker image
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'us-central1-docker.pkg.dev/searce-playground-v1/kpt-tech/image:v1', '.' ]
+  args: [ 'build', '-t', 'us-central1-docker.pkg.dev/searce-playground-v1/kpt-tech/tech-session:v1', '.' ]
 # push docker image
 images:
-- 'us-central1-docker.pkg.dev/searce-playground-v1/kpt-tech/image:v1'
+- 'us-central1-docker.pkg.dev/searce-playground-v1/kpt-tech/tech-session:v1'
 ## [END cloudbuild_quickstart_build]
 
   
