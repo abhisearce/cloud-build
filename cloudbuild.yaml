@@ -1,13 +1,13 @@
-# [START cloudbuild_quickstart_build]
-# build docker image
 steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'us-central1-docker.pkg.dev/searce-playground-v1/kpt-tech/tech-session:v1', '.' ]
-# push docker image
-images:
-- 'us-central1-docker.pkg.dev/searce-playground-v1/kpt-tech/tech-session:v1'
-## [END cloudbuild_quickstart_build]
-
+# build the container image and push to Artifact registry
+- name: 'gcr.io/kaniko-project/executor:latest'
+  args:
+    [
+      "--dockerfile=dockerfile",
+      "--cache=true",
+      "--cache-ttl=6h",
+      "--destination=us-central1-docker.pkg.dev/$PROJECT_ID/kpt-test-repo/kpt-image:${SHORT_SHA}"
+    ]
   
 options:
  logging: CLOUD_LOGGING_ONLY
