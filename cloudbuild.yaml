@@ -1,10 +1,10 @@
 steps:
   # build the container image
 - name: "gcr.io/cloud-builders/docker"
-  args: ["build", "-t", "us-central1-docker.pkg.dev/adroit-nimbus-370411/kpt-tech/kpt:1.0", "."]
+  args: ["build", "-t", "us-central1-docker.pkg.dev/adroit-nimbus-370411/tech-repo/kpt:1.0", "."]
   # push container image
 - name: "gcr.io/cloud-builders/docker"
-  args: ["push", "us-central1-docker.pkg.dev/adroit-nimbus-370411/kpt-tech/kpt:1.0"]
+  args: ["push", "us-central1-docker.pkg.dev/adroit-nimbus-370411/tech-repo/kpt:1.0"]
   # deploy container image to GKE
 #- name: "gcr.io/cloud-builders/gke-deploy"
 #  args:
